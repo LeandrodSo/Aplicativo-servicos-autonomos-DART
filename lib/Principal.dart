@@ -178,7 +178,7 @@ class _PrincipalState extends State<Principal> {
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             Text(
-              'Ao seu App de Serviços',
+              'Menu principal',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ],

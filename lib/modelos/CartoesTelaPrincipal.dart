@@ -56,7 +56,7 @@ class Cartoes extends StatelessWidget {
                   child: Text(
                     "Manutenção Residencial",
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 13,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
@@ -162,7 +162,7 @@ class Cartoes extends StatelessWidget {
                   child: Text(
                     "Área de Tecnologia e Informática",
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 10,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
@@ -321,7 +321,7 @@ class Cartoes extends StatelessWidget {
                   child: Text(
                     "Consultoria e Freelancers",
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 12,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),

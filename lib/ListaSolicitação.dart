@@ -140,11 +140,11 @@ class _SolicitacoesAmizadeState extends State<SolicitacoesAmizade> {
                     ),
                     Text(
                       'Profissão: ${solicitacao.profissao}',
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 13),
                     ),
                     Text(
                       'Cidade: ${solicitacao.cidade}',
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 13),
                     ),
                   ],
                 ),
@@ -159,7 +159,7 @@ class _SolicitacoesAmizadeState extends State<SolicitacoesAmizade> {
                       ),
                       child: Text('Aceitar'),
                     ),
-                    SizedBox(width: 10),
+                    SizedBox(width: 8),
                     ElevatedButton(
                       onPressed: () {
                         recusarSolicitacao(solicitacao);
@@ -169,7 +169,7 @@ class _SolicitacoesAmizadeState extends State<SolicitacoesAmizade> {
                       ),
                       child: Text('Recusar'),
                     ),
-                    SizedBox(width: 10),
+                    SizedBox(width: 8),
                   ],
                 ),
               ],

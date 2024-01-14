@@ -25,6 +25,7 @@ class _AjudaState extends State<Ajuda> {
   Future<void> enviarMensagem(String mensagem) async {
     final MySqlConnection connection =
         await MySqlConnection.connect(ConnectionSettings(
+      //host: '172.22.87.199',
       host: '192.168.99.105',
       port: 3306,
       user: 'dart_user',

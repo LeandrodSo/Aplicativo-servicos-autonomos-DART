@@ -25,7 +25,8 @@ class _TelaDesignerWEBState extends State<TelaDesignerWEB> {
 
   Future<void> _inicializarConexao() async {
     conexao = await MySqlConnection.connect(ConnectionSettings(
-      host: '192.168.99.104',
+      //host: '172.22.87.199',
+      host: '192.168.99.105',
       port: 3306,
       user: 'dart_user',
       password: 'dart_pass',
@@ -39,12 +40,12 @@ class _TelaDesignerWEBState extends State<TelaDesignerWEB> {
       'usabilidade',
       'wireframe',
       'protótipo',
-      'responsividade',
+      'Editor/Designer Web',
       'HTML',
       'CSS',
       'JavaScript',
       'UX/UI',
-      'web',
+      'diretor',
       'cores',
       'tipografia',
       'imagens',
@@ -52,7 +53,7 @@ class _TelaDesignerWEBState extends State<TelaDesignerWEB> {
       'SEO',
       'CMS',
       'WordPress',
-      'Bootstrap',
+      'Desenvolvedor',
       'framework',
       'front-end',
       'back-end',
@@ -129,7 +130,7 @@ class _TelaDesignerWEBState extends State<TelaDesignerWEB> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tela de Cabeleireiro'),
+        title: Text('Tela de designWeb'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

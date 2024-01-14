@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mysql1/mysql1.dart';
+import 'package:crypto/crypto.dart';
+import 'dart:convert';
 import 'package:app_servicos/Complemento.dart';
 
 class CadastroScreen extends StatefulWidget {
@@ -47,7 +49,7 @@ class _CadastroScreenState extends State<CadastroScreen> {
       return;
     }
 
-    // Conecta ao banco de dados MySQL------------------------------------------
+    // Conecta ao banco de dados MySQL ----------------------------------------
 
     final conexao = await MySqlConnection.connect(ConnectionSettings(
       //host: '172.22.87.199',
@@ -60,15 +62,26 @@ class _CadastroScreenState extends State<CadastroScreen> {
 
     //--------------------------------------------------------------------------
 
+    // Função para gerar o hash da senha
+    String generateHash(String input) {
+      var bytes = utf8.encode(input);
+      var hash = sha256.convert(bytes);
+      return hash.toString();
+    }
+
+    // Gerar o hash da senha antes de armazená-la no banco de dados
+    final hashedPassword = generateHash(password);
+
+    // Realizar a inserção no banco de dados -----------------------------------
     final result = await conexao.query(
       'INSERT INTO usuarios (nome, password, email) VALUES (?, ?, ?)',
-      [nome, password, email],
+      [nome, hashedPassword, email],
     );
 
-    // Verifique se a inserção foi bem-sucedida --------------------------------
+    // Verificar se a inserção foi bem-sucedida ---------------------------------
     if (result.affectedRows != 0) {
       showDialog(
-        //notificação de sucesso
+        // Notificação de sucesso
         context: context,
         builder: (context) {
           return AlertDialog(
@@ -81,7 +94,8 @@ class _CadastroScreenState extends State<CadastroScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => ComplementoScreen()),
+                      builder: (context) => ComplementoScreen(),
+                    ),
                   );
                 },
                 child: Text('OK'),
@@ -92,7 +106,7 @@ class _CadastroScreenState extends State<CadastroScreen> {
       );
     } else {
       showDialog(
-        //notificação de erro
+        // Notificação de erro
         context: context,
         builder: (context) {
           return AlertDialog(
@@ -124,27 +138,27 @@ class _CadastroScreenState extends State<CadastroScreen> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center, //alinhamento centro
-          mainAxisAlignment: MainAxisAlignment.center, //alinhamento centro
+          crossAxisAlignment: CrossAxisAlignment.center, // Alinhamento centro
+          mainAxisAlignment: MainAxisAlignment.center, // Alinhamento centro
           children: <Widget>[
             TextField(
               controller: nomeController,
               decoration: InputDecoration(
-                  labelText: 'Nome de Usuário'), //rotulo  no campo
+                  labelText: 'Nome de Usuário'), // Rótulo no campo
             ),
             TextField(
               controller: passwordController,
               decoration:
-                  InputDecoration(labelText: 'Senha'), //rotulo  no campo
+                  InputDecoration(labelText: 'Senha'), // Rótulo no campo
               obscureText: true,
             ),
             TextField(
               controller: emailController,
               decoration:
-                  InputDecoration(labelText: 'email'), //rotulo  no campo
+                  InputDecoration(labelText: 'email'), // Rótulo no campo
             ),
             ElevatedButton(
-              onPressed: _Cadastro, //chame a função _Cadastro ao pressionar"
+              onPressed: _Cadastro, // Chame a função _Cadastro ao pressionar
               child: Text('Cadastrar Novo Usuário'),
             ),
           ],

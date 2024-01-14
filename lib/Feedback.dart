@@ -73,6 +73,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: Text("Feedback"),
@@ -102,7 +103,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
               SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(7, (index) {
+                children: List.generate(4, (index) {
                   //opçoes de 0 a 6 para pontuação
                   return ElevatedButton(
                     onPressed: () {
